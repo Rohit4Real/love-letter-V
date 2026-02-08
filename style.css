@@ -7,16 +7,29 @@ body {
   min-height: 100vh;
   background: #f3e9f7;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   font-family: "Georgia", serif;
   overflow-x: hidden;
 }
 
-/* ================= ENVELOPE ================= */
+/* HEADER */
+.title {
+  margin-top: 25px;
+  font-size: 1.8rem;
+  color: #d6336c;
+}
 
+.subtitle {
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ENVELOPE */
 .envelope-wrapper {
   position: relative;
+  margin-top: 20px;
 }
 
 #envelope {
@@ -30,25 +43,27 @@ body {
   overflow: visible;
 }
 
-/* Flap & Pocket */
-
-.front {
+/* FLAP */
+.flap {
   position: absolute;
+  top: 0;
   width: 0;
   height: 0;
-}
-
-.flap {
   border-left: 140px solid transparent;
   border-right: 140px solid transparent;
   border-top: 100px solid #f26b6b;
   border-bottom: 80px solid transparent;
   transform-origin: top;
-  transition: transform 0.6s ease;
+  transition: transform 0.7s ease;
   z-index: 5;
 }
 
+/* POCKET */
 .pocket {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
   border-left: 140px solid #f7a1a1;
   border-right: 140px solid #f7a1a1;
   border-bottom: 90px solid #f26b6b;
@@ -57,8 +72,7 @@ body {
   z-index: 3;
 }
 
-/* ================= LETTER ================= */
-
+/* LETTER */
 .letter {
   position: absolute;
   top: 10px;
@@ -68,7 +82,7 @@ body {
   padding: 16px;
   border-radius: 8px;
   box-shadow: 0 6px 22px rgba(0,0,0,0.15);
-  transition: transform 0.7s ease;
+  transition: transform 0.8s ease;
   z-index: 10;
 }
 
@@ -79,32 +93,41 @@ body {
   color: #333;
 }
 
-/* Open animation */
+.letter .to {
+  font-weight: bold;
+}
 
+.letter .end {
+  margin-top: 10px;
+}
+
+/* OPEN STATE */
 .open .flap {
   transform: rotateX(180deg);
 }
 
 .open .letter {
-  transform: translateY(-165px);
+  transform: translateY(-190px);
 }
 
-/* ================= FLOATING HEARTS ================= */
+.open .pocket {
+  z-index: 1;
+}
 
-#floating-hearts {
+/* FLOATING HEARTS */
+#hearts {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  overflow: hidden;
   z-index: 1;
 }
 
 .heart {
   position: absolute;
-  bottom: -40px;
+  bottom: -30px;
   width: 20px;
   height: 20px;
-  background: pink;
+  background: #ff5c8a;
   transform: rotate(45deg);
   animation: floatUp linear forwards;
   opacity: 0.8;
@@ -116,7 +139,7 @@ body {
   position: absolute;
   width: 20px;
   height: 20px;
-  background: pink;
+  background: #ff5c8a;
   border-radius: 50%;
 }
 
@@ -137,8 +160,7 @@ body {
   }
 }
 
-/* ================= MOBILE ================= */
-
+/* MOBILE */
 @media (max-width: 480px) {
   #envelope {
     width: 240px;
