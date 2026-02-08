@@ -4,22 +4,21 @@
   <meta charset="UTF-8">
   <title>For Vagmita 💖</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <h1 class="title">For Vagmita 💖</h1>
-  <p class="subtitle">Tap the envelope for a surprise 🎵</p>
+  <p class="subtitle">Tap OPEN for a surprise 🎵</p>
 
   <div class="envelope-wrapper">
-    <div id="envelope">
+    <div id="envelope" class="closed">
 
       <div class="flap"></div>
       <div class="pocket"></div>
 
       <div class="letter">
-        <p><strong>Hello Vagmita,</strong></p>
+        <p class="to">Hello Vagmita,</p>
 
         <p>
           As Valentine’s week is going on,<br>
@@ -39,11 +38,16 @@
       </div>
 
     </div>
+
+    <div class="buttons">
+      <button id="openBtn">OPEN</button>
+      <button id="closeBtn">CLOSE</button>
+    </div>
   </div>
 
-  <div id="hearts"></div>
+  <div id="effects"></div>
 
-  <audio id="loveSong" preload="auto">
+  <audio id="song" preload="auto">
     <source src="song.mp3.mp3" type="audio/mpeg">
   </audio>
 
