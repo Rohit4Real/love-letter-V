@@ -1,25 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
   const envelope = document.getElementById("envelope");
   const song = document.getElementById("loveSong");
-  const heartBox = document.getElementById("hearts");
+  const hearts = document.getElementById("hearts");
 
   let opened = false;
 
   envelope.addEventListener("click", () => {
-    if (!opened) {
-      envelope.classList.add("open");
-      playMusic();
-      startHearts();
-      opened = true;
-    }
-  });
+    if (opened) return;
 
-  function playMusic() {
-    song.volume = 0.6;
-    song.play().catch(() => {
-      console.log("Tap again if browser blocked audio");
-    });
-  }
+    opened = true;
+    envelope.classList.add("open");
+
+    // Start music AFTER envelope opens
+    setTimeout(() => {
+      song.volume = 0.6;
+      song.play().catch(() => {});
+      startHearts();
+    }, 600);
+  });
 
   function startHearts() {
     setInterval(() => {
@@ -27,9 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
       heart.className = "heart";
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDuration = 4 + Math.random() * 3 + "s";
-      heartBox.appendChild(heart);
+      hearts.appendChild(heart);
 
       setTimeout(() => heart.remove(), 7000);
-    }, 300);
+    }, 350);
   }
 });
