@@ -1,50 +1,31 @@
 const envelope = document.getElementById("envelope");
-const openBtn = document.getElementById("openBtn");
-const closeBtn = document.getElementById("closeBtn");
-const song = document.getElementById("song");
-const effects = document.getElementById("effects");
+const music = document.getElementById("music");
 
-let effectInterval;
-const emojis = ["💖","💕","💘","💗","💞"];
-
-openBtn.onclick = () => {
+function openLetter() {
   envelope.classList.add("open");
-  song.currentTime = 0;
-  song.volume = 0.6;
-  song.play().catch(() => {});
-  startEffects();
-};
-
-closeBtn.onclick = () => {
-  envelope.classList.remove("open");
-  song.pause();
-  stopEffects();
-};
-
-function startEffects() {
-  stopEffects();
-  effectInterval = setInterval(() => {
-
-    // Heart
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = 4 + Math.random() * 3 + "s";
-    effects.appendChild(heart);
-    setTimeout(() => heart.remove(), 7000);
-
-    // Emoji
-    const emoji = document.createElement("div");
-    emoji.className = "love-emoji";
-    emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-    emoji.style.left = Math.random() * 100 + "vw";
-    emoji.style.animationDuration = 5 + Math.random() * 3 + "s";
-    effects.appendChild(emoji);
-    setTimeout(() => emoji.remove(), 8000);
-
-  }, 300);
+  music.play();
+  startHearts();
 }
 
-function stopEffects() {
-  clearInterval(effectInterval);
+function closeLetter() {
+  envelope.classList.remove("open");
+  music.pause();
+  music.currentTime = 0;
+}
+
+function startHearts() {
+  for (let i = 0; i < 25; i++) {
+    createHeart();
+  }
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "💗";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = 4 + Math.random() * 4 + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 8000);
 }
