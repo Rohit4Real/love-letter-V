@@ -5,37 +5,37 @@
 body {
   margin: 0;
   min-height: 100vh;
+  background: #f3e9f7;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f3e9f7;
   font-family: "Georgia", serif;
+  overflow-x: hidden;
 }
 
-/* Envelope wrapper */
+/* ================= ENVELOPE ================= */
+
 .envelope-wrapper {
   position: relative;
-  width: 280px;
 }
 
-/* Envelope */
 #envelope {
   position: relative;
   width: 280px;
   height: 180px;
   background: #f26b6b;
-  border-radius: 0 0 6px 6px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
   cursor: pointer;
-  overflow: visible; /* IMPORTANT FIX */
+  overflow: visible;
 }
 
-/* Front shapes */
+/* Flap & Pocket */
+
 .front {
   position: absolute;
   width: 0;
   height: 0;
-  z-index: 4;
 }
 
 .flap {
@@ -53,97 +53,109 @@ body {
   border-right: 140px solid #f7a1a1;
   border-bottom: 90px solid #f26b6b;
   border-top: 90px solid transparent;
-  border-radius: 0 0 6px 6px;
+  border-radius: 0 0 8px 8px;
   z-index: 3;
 }
 
-/* Letter */
+/* ================= LETTER ================= */
+
 .letter {
   position: absolute;
-  top: 8px;
+  top: 10px;
   left: 5%;
   width: 90%;
-  background: #fff;
-  border-radius: 6px;
-  padding: 14px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-  transition: transform 0.6s ease;
-  z-index: 2;
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.15);
+  transition: transform 0.7s ease;
+  z-index: 10;
 }
 
-/* Text */
-.words {
+.letter p {
+  margin: 0 0 10px;
   font-size: 0.85rem;
-  line-height: 1.4;
-  margin-bottom: 6px;
+  line-height: 1.5;
   color: #333;
 }
 
-.words.line1 {
-  font-weight: bold;
-  text-align: left;
-}
+/* Open animation */
 
-/* Open state */
 .open .flap {
   transform: rotateX(180deg);
 }
 
 .open .letter {
-  transform: translateY(-140px);
+  transform: translateY(-165px);
 }
 
-/* Hearts */
-.hearts {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  right: 0;
-  z-index: 6;
+/* ================= FLOATING HEARTS ================= */
+
+#floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .heart {
   position: absolute;
-  width: 40px;
-  height: 65px;
+  bottom: -40px;
+  width: 20px;
+  height: 20px;
+  background: pink;
+  transform: rotate(45deg);
+  animation: floatUp linear forwards;
+  opacity: 0.8;
 }
 
 .heart::before,
 .heart::after {
   content: "";
   position: absolute;
-  width: 40px;
-  height: 65px;
-  background: #e60073;
-  border-radius: 50px 50px 0 0;
+  width: 20px;
+  height: 20px;
+  background: pink;
+  border-radius: 50%;
 }
 
 .heart::before {
-  transform: rotate(-45deg);
-  left: 20px;
+  top: -10px;
+  left: 0;
 }
 
 .heart::after {
-  transform: rotate(45deg);
-}
-
-.a1 { left: 25%; animation: floatUp 4s linear infinite; }
-.a2 { left: 50%; animation: floatUp 5s linear infinite; }
-.a3 { left: 75%; animation: floatUp 6s linear infinite; }
-
-.close .heart {
-  display: none;
+  left: -10px;
+  top: 0;
 }
 
 @keyframes floatUp {
-  from { top: 0; opacity: 1; }
-  to { top: -220px; opacity: 0; }
+  to {
+    transform: translateY(-110vh) rotate(45deg);
+    opacity: 0;
+  }
 }
 
-/* Mobile */
+/* ================= MOBILE ================= */
+
 @media (max-width: 480px) {
   #envelope {
     width: 240px;
     height: 160px;
+  }
+
+  .flap {
+    border-left: 120px solid transparent;
+    border-right: 120px solid transparent;
+  }
+
+  .pocket {
+    border-left: 120px solid #f7a1a1;
+    border-right: 120px solid #f7a1a1;
+  }
+
+  .letter p {
+    font-size: 0.78rem;
   }
 }
