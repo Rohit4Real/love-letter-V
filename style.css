@@ -9,27 +9,26 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Georgia", serif;
+  font-family: Georgia, serif;
   overflow-x: hidden;
 }
 
-/* HEADER */
+/* Header */
 .title {
-  margin-top: 25px;
-  font-size: 1.8rem;
+  margin-top: 24px;
   color: #d6336c;
+  font-size: 1.8rem;
 }
 
 .subtitle {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   font-size: 0.9rem;
   color: #555;
 }
 
-/* ENVELOPE */
+/* Envelope */
 .envelope-wrapper {
   position: relative;
-  margin-top: 20px;
 }
 
 #envelope {
@@ -43,7 +42,7 @@ body {
   overflow: visible;
 }
 
-/* FLAP */
+/* Flap */
 .flap {
   position: absolute;
   top: 0;
@@ -54,11 +53,11 @@ body {
   border-top: 100px solid #f26b6b;
   border-bottom: 80px solid transparent;
   transform-origin: top;
-  transition: transform 0.7s ease;
+  transition: transform 0.6s ease;
   z-index: 5;
 }
 
-/* POCKET */
+/* Pocket */
 .pocket {
   position: absolute;
   bottom: 0;
@@ -72,17 +71,18 @@ body {
   z-index: 3;
 }
 
-/* LETTER */
+/* Letter */
 .letter {
   position: absolute;
-  top: 10px;
+  top: 14px;
   left: 5%;
   width: 90%;
-  background: white;
+  background: #fff;
   padding: 16px;
   border-radius: 8px;
   box-shadow: 0 6px 22px rgba(0,0,0,0.15);
-  transition: transform 0.8s ease;
+  transform: translateY(0);
+  transition: transform 0.6s ease;
   z-index: 10;
 }
 
@@ -93,28 +93,25 @@ body {
   color: #333;
 }
 
-.letter .to {
-  font-weight: bold;
-}
-
 .letter .end {
   margin-top: 10px;
 }
 
-/* OPEN STATE */
+/* Open sequence */
 .open .flap {
   transform: rotateX(180deg);
 }
 
 .open .letter {
-  transform: translateY(-190px);
+  transform: translateY(-90px);   /* gentle slide only */
+  transition-delay: 0.6s;        /* AFTER envelope opens */
 }
 
 .open .pocket {
   z-index: 1;
 }
 
-/* FLOATING HEARTS */
+/* Hearts */
 #hearts {
   position: fixed;
   inset: 0;
@@ -125,8 +122,8 @@ body {
 .heart {
   position: absolute;
   bottom: -30px;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   background: #ff5c8a;
   transform: rotate(45deg);
   animation: floatUp linear forwards;
@@ -137,30 +134,30 @@ body {
 .heart::after {
   content: "";
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   background: #ff5c8a;
   border-radius: 50%;
 }
 
 .heart::before {
-  top: -10px;
+  top: -9px;
   left: 0;
 }
 
 .heart::after {
-  left: -10px;
+  left: -9px;
   top: 0;
 }
 
 @keyframes floatUp {
   to {
-    transform: translateY(-110vh) rotate(45deg);
+    transform: translateY(-100vh) rotate(45deg);
     opacity: 0;
   }
 }
 
-/* MOBILE */
+/* Mobile */
 @media (max-width: 480px) {
   #envelope {
     width: 240px;
