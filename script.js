@@ -1,16 +1,25 @@
-$(document).ready(function () {
-  const envelope = $("#envelope");
+document.addEventListener("DOMContentLoaded", () => {
+  const envelope = document.getElementById("envelope");
   const song = document.getElementById("loveSong");
-  const heartContainer = document.getElementById("floating-hearts");
+  const heartBox = document.getElementById("hearts");
 
-  envelope.on("click", function () {
-    envelope.addClass("open");
+  let opened = false;
 
-    song.volume = 0.6;
-    song.play().catch(() => {});
-
-    startHearts();
+  envelope.addEventListener("click", () => {
+    if (!opened) {
+      envelope.classList.add("open");
+      playMusic();
+      startHearts();
+      opened = true;
+    }
   });
+
+  function playMusic() {
+    song.volume = 0.6;
+    song.play().catch(() => {
+      console.log("Tap again if browser blocked audio");
+    });
+  }
 
   function startHearts() {
     setInterval(() => {
@@ -18,12 +27,9 @@ $(document).ready(function () {
       heart.className = "heart";
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDuration = 4 + Math.random() * 3 + "s";
+      heartBox.appendChild(heart);
 
-      heartContainer.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 7000);
+      setTimeout(() => heart.remove(), 7000);
     }, 300);
   }
 });
