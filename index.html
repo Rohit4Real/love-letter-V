@@ -1,56 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>For Vagmita 💖</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1 class="title">For Vagmita 💖</h1>
-  <p class="subtitle">Tap OPEN for a surprise 🎵</p>
+<h1 class="title">For Vagmita 💖</h1>
+<p class="hint">Tap OPEN for a surprise 🎵</p>
 
-  <div class="envelope-wrapper">
-    <div id="envelope" class="closed">
+<div class="scene">
 
-      <div class="flap"></div>
-      <div class="pocket"></div>
+  <div class="envelope" id="envelope">
+    <div class="flap"></div>
+    <div class="body"></div>
 
-      <div class="letter">
-        <p class="to">Hello Vagmita,</p>
+    <!-- LETTER -->
+    <div class="letter" id="letter">
+      <p><b>Hello Vagmita,</b></p>
 
-        <p>
-          As Valentine’s week is going on,<br>
-          and on this beautiful occasion of <b>Propose Day</b>,<br>
-          I want to say something from the bottom of my heart.
-        </p>
+      <p>
+        As Valentine’s week is going on,<br>
+        and on this beautiful occasion of <b>Propose Day</b>,<br>
+        I want to say something from the bottom of my heart.
+      </p>
 
-        <p>
-          With all the feelings I carry inside me,<br>
-          I want you to accept my proposal today.
-        </p>
+      <p>
+        With all the feelings I carry inside me,<br>
+        I want you to accept my proposal today.
+      </p>
 
-        <p class="end">
-          I love you so much — hehe,<br>
-          and yeah… <b>I love you the most</b> ❤️
-        </p>
-      </div>
-
-    </div>
-
-    <div class="buttons">
-      <button id="openBtn">OPEN</button>
-      <button id="closeBtn">CLOSE</button>
+      <p>
+        I love you so much — hehe,<br>
+        and yeah… <b>I love you the most</b> 💗
+      </p>
     </div>
   </div>
 
-  <div id="effects"></div>
+  <div class="buttons">
+    <button onclick="openLetter()">OPEN</button>
+    <button onclick="closeLetter()">CLOSE</button>
+  </div>
 
-  <audio id="song" preload="auto">
-    <source src="song.mp3.mp3" type="audio/mpeg">
-  </audio>
+</div>
 
-  <script src="script.js"></script>
+<audio id="music" src="song.mp3.mp3" loop></audio>
+
+<script src="script.js"></script>
 </body>
 </html>
