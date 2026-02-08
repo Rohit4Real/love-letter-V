@@ -1,52 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For Vagmita 💌</title>
+  <meta charset="UTF-8" />
+  <title>For Vagmita 💖</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="style.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
-  <div class="envelope-wrapper">
-    <div id="envelope" class="close">
+  <!-- HEADER -->
+  <h1 class="title">For Vagmita 💖</h1>
+  <p class="subtitle">Tap the envelope for a surprise 🎵</p>
 
-      <div class="front flap"></div>
-      <div class="front pocket"></div>
+  <!-- ENVELOPE -->
+  <div class="envelope-wrapper">
+    <div id="envelope">
+
+      <div class="flap"></div>
+      <div class="pocket"></div>
 
       <div class="letter">
-        <p><strong>Hello Vagmita,</strong></p>
+        <p class="to">Hello Vagmita,</p>
 
         <p>
-          As Valentine’s week is going on,  
-          and on this beautiful occasion of  
-          <strong>Propose Day</strong>,  
+          As Valentine’s week is going on,<br>
+          and on this beautiful occasion of <b>Propose Day</b>,<br>
           I want to say something from the bottom of my heart.
         </p>
 
         <p>
-          With all the feelings I carry inside me,  
+          With all the feelings I carry inside me,<br>
           I want you to accept my proposal today.
         </p>
 
-        <p>
-          I love you so much — hehe,  
-          and yeah… <strong>I love you the most</strong> ❤️
+        <p class="end">
+          I love you so much — hehe,<br>
+          and yeah… <b>I love you the most</b> ❤️
         </p>
       </div>
 
     </div>
   </div>
 
-  <!-- Floating hearts layer -->
-  <div id="floating-hearts"></div>
+  <!-- FLOATING HEARTS -->
+  <div id="hearts"></div>
 
-  <!-- Audio -->
-  <audio id="loveSong">
-    <source src="song.mp3" type="audio/mpeg">
+  <!-- AUDIO -->
+  <audio id="loveSong" preload="auto">
+    <source src="song.mp3.mp3" type="audio/mpeg">
   </audio>
 
   <script src="script.js"></script>
